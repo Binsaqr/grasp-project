@@ -1,0 +1,12 @@
+# Optional custom embodiment plugin loader.
+#
+# Leave plugin_module/plugin_class empty to use the safe built-in CustomPlugin
+# fallback. Custom plugins are CONFIG_ONLY until their own release gate promotes
+# them; they must not control production actions by config alone.
+
+embodiment_id: custom
+plugin_module:
+plugin_class:
+release_status: CONFIG_ONLY
+expected_contact_count:
+notes: "Configure an importable plugin only after camera-free tests pass."

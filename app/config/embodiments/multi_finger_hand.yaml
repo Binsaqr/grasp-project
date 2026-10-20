@@ -1,0 +1,12 @@
+embodiment_id: multi_finger_robotic_hand
+display_name: Multi-Finger Robotic Hand
+expected_contact_count_min: 2
+expected_contact_count_max: null
+contact_geometry_types: [fingertip, finger_link, palm_region, patch]
+primary_quality_metric: support_polygon
+secondary_quality_metrics: [contact_coverage, object_enclosure, stability]
+engagement_action: READY_TO_ENGAGE
+release_status: CONFIG_ONLY
+stable_status: experimental
+limitations:
+  - Visual evidence does not measure finger force or tactile pressure.

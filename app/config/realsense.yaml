@@ -1,0 +1,10 @@
+# User-tunable RealSense demo defaults.
+ros_domain_id: 67
+# The hand-mounted D405 is constrained to a USB 2.1 front port.  Keep 30 FPS
+# while reducing transport bandwidth enough for simultaneous color + depth.
+color_profile: "480x270x30"
+depth_profile: "480x270x30"
+align_depth: true
+stream_debug_rgb: false
+stream_debug_depth: false
+debug_stream_fps: 1

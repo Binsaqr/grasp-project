@@ -1,0 +1,12 @@
+embodiment_id: parallel_jaw_two_finger
+display_name: Parallel Two-Finger Gripper
+expected_contact_count_min: 2
+expected_contact_count_max: 2
+contact_geometry_types: [patch, fingertip, finger_link]
+primary_quality_metric: two_contact_epsilon
+secondary_quality_metrics: [grip_width, opposition, visual_contact, depth_consistency]
+engagement_action: READY_TO_CLOSE
+release_status: PRODUCTION_READY
+stable_status: stable
+limitations:
+  - Assumes two opposing contacts and no force sensors.

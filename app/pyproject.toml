@@ -1,0 +1,9 @@
+[project]
+name = "grasp-project"
+version = "0.1.0"
+description = "RealSense RGB-D grasp planning and DAVIS event-camera motion demo."
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

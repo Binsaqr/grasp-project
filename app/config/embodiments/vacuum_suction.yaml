@@ -1,0 +1,13 @@
+embodiment_id: vacuum_suction
+display_name: Vacuum / Suction Gripper
+expected_contact_count_min: 1
+expected_contact_count_max: 1
+contact_geometry_types: [suction_area, patch]
+primary_quality_metric: suction_seal
+secondary_quality_metrics: [surface_flatness, normal_alignment, edge_leakage_risk]
+engagement_action: READY_TO_APPLY_SUCTION
+release_status: CONFIG_ONLY
+stable_status: experimental
+limitations:
+  - Does not measure suction pressure.
+  - Two-contact epsilon and grip width are not applicable.

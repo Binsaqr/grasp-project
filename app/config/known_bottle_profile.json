@@ -1,0 +1,5 @@
+{
+  "description": "Default known bottle profile placeholder. The active legacy path still reads known_bottle_grasp_profile.json.",
+  "legacy_profile": "../known_bottle_grasp_profile.json"
+}
+

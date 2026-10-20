@@ -1,0 +1,56 @@
+enabled: true
+mount_location: forearm_behind_wrist
+camera_orientation: forward_over_hand
+approximate_tilt_deg: 15
+# Original demo orientation prior; verify the mounting and gravity calibration
+# for each installation. The numeric configuration is retained unchanged.
+image_roll_compensation_deg: 0
+image_roll_compensation_status: APPROXIMATE_LIVE_FRAME_OBSERVATION
+camera_frame: realsense_color_optical_frame
+davis_frame: davis_optical_frame
+end_effector_frame: hand_or_gripper_frame
+calibration_status: approximate
+guidance_frame: camera_frame
+use_camera_frame_guidance: true
+require_robot_base_calibration: false
+
+# Approximate camera-to-hand contact-point translation in the RealSense color
+# optical frame (+x right, +y down, +z forward/away from the camera). Initial
+# planning projects this fixed point with its own z coordinate to choose the
+# nearest safe bottle-local band. Bottle depth is used only for approach error;
+# it must not make the rigid finger marker move in the image. The selected band
+# remains fixed to the bottle after lock.
+camera_to_hand_offset_enabled: true
+camera_to_hand_offset_mm:
+  x: -70.0
+  y: 80.0
+  z: 170.0
+camera_to_hand_offset_uncertainty_mm:
+  x: 15.0
+  y: 10.0
+  z: 10.0
+desired_contact_gap_mm: 10.0
+hand_offset_calibration_status: APPROXIMATE_USER_TUNED_NOT_PHYSICALLY_VALIDATED
+hand_offset_physically_validated: false
+hand_offset_source: original_demo_offset_prior_not_calibrated_for_this_installation
+
+# Camera-to-bottle distance is the forward hand reach plus the desired contact
+# gap. These bounds are estimates for operator guidance, not measured contact.
+desired_close_distance_mm: 180.0
+min_close_distance_mm: 160.0
+max_close_distance_mm: 220.0
+too_close_distance_mm: 145.0
+too_far_distance_mm: 250.0
+close_distance_range_source: camera_to_hand_offset_plus_contact_gap_estimate
+close_distance_range_validation_status: APPROXIMATE_NOT_PHYSICALLY_CALIBRATED
+close_distance_range_physically_validated: false
+
+# Locked-band validity thresholds. These expose the existing post-lock safety
+# limits under one hand-prototype contract; they do not relax readiness gates.
+max_band_center_drift_px: 72.0
+max_band_body_fraction_drift: 0.04
+max_band_angle_drift_deg: 45.0
+max_band_depth_change_mm: 350.0
+min_band_visibility_ratio: 0.50
+min_band_depth_valid_ratio: 0.50
+max_band_stale_sec: 2.0

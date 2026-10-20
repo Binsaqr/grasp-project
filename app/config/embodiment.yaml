@@ -1,0 +1,23 @@
+active_embodiment: two_point_parallel_gripper
+selection_mode: configured
+configured_embodiment: parallel_jaw_two_finger
+allow_automatic_detection: false
+require_user_confirmation: true
+lock_embodiment_during_grasp: true
+minimum_detection_confidence: 0.75
+embodiment_source: configured
+expected_contact_count: 2
+contact_geometry: opposing_side_contacts
+contact_patch_shape: left_right_rectangular_patches
+contact_quality_rules:
+  - grip_width
+  - opposing_contact_balance
+  - epsilon
+  - patch_validity
+allowed_quality_metrics:
+  - epsilon_force_closure
+  - grip_width
+  - visual_contact
+  - depth_consistency
+limitations:
+  - Assumes two opposing contacts and no force sensors.

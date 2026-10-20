@@ -1,0 +1,55 @@
+# Benchmark Lab defaults.
+# These weights rank display/report-only benchmark configurations. They do not
+# affect production grasp decisions, RealSense tracking, DAVIS scoring, or
+# epsilon/wrench math.
+
+duration_sec: 20
+sample_rate_hz: 5
+ranking_mode: safety_first
+
+detection_weight: 0.20
+quality_weight: 0.20
+decision_weight: 0.20
+contact_weight: 0.20
+latency_weight: 0.10
+reliability_weight: 0.10
+
+safety_first:
+  detection_weight: 0.20
+  quality_weight: 0.20
+  decision_weight: 0.20
+  contact_weight: 0.20
+  latency_weight: 0.10
+  reliability_weight: 0.10
+
+speed_first:
+  detection_weight: 0.20
+  quality_weight: 0.15
+  decision_weight: 0.15
+  contact_weight: 0.10
+  latency_weight: 0.35
+  reliability_weight: 0.05
+
+detection_first:
+  detection_weight: 0.45
+  quality_weight: 0.15
+  decision_weight: 0.15
+  contact_weight: 0.10
+  latency_weight: 0.10
+  reliability_weight: 0.05
+
+quality_first:
+  detection_weight: 0.15
+  quality_weight: 0.40
+  decision_weight: 0.20
+  contact_weight: 0.15
+  latency_weight: 0.05
+  reliability_weight: 0.05
+
+motion_safety_first:
+  detection_weight: 0.10
+  quality_weight: 0.15
+  decision_weight: 0.35
+  contact_weight: 0.15
+  latency_weight: 0.10
+  reliability_weight: 0.15

@@ -1,0 +1,12 @@
+embodiment_id: three_finger_gripper
+display_name: Three-Finger Gripper
+expected_contact_count_min: 3
+expected_contact_count_max: 3
+contact_geometry_types: [patch, fingertip]
+primary_quality_metric: support_triangle
+secondary_quality_metrics: [angular_coverage, contact_spread, contact_coverage]
+engagement_action: READY_TO_ENGAGE
+release_status: READY_FOR_BENCHMARKING
+stable_status: experimental
+limitations:
+  - Current two-contact epsilon is not applicable.

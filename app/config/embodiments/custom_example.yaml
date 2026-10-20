@@ -1,0 +1,12 @@
+embodiment_id: custom
+display_name: Custom Example Gripper
+expected_contact_count_min: 0
+expected_contact_count_max: null
+contact_geometry_types: [point, line, patch, distributed_patch, suction_area, wrap_region]
+primary_quality_metric: contact_count_validity
+secondary_quality_metrics: []
+engagement_action: READY_TO_ENGAGE
+release_status: CONFIG_ONLY
+stable_status: experimental
+limitations:
+  - Custom plugins require tests and release-gate evidence before production use.

@@ -1,0 +1,9 @@
+mount_layout: unknown
+realsense_frame: realsense_color_optical_frame
+davis_frame: davis_optical_frame
+approximate_baseline_mm: 0
+vertical_offset_mm: 0
+horizontal_offset_mm: 0
+same_angle_assumed: false
+homography_path: config/davis_to_realsense_homography.json
+extrinsics_path: config/davis_to_realsense_extrinsics.json

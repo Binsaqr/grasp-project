@@ -1,0 +1,12 @@
+embodiment_id: articulated_two_finger
+display_name: Articulated Two-Finger Gripper
+expected_contact_count_min: 2
+expected_contact_count_max: 2
+contact_geometry_types: [fingertip, finger_link, patch]
+primary_quality_metric: opposition
+secondary_quality_metrics: [contact_angle_compatibility, contact_spread, stability]
+engagement_action: READY_TO_ENGAGE
+release_status: CONFIG_ONLY
+stable_status: experimental
+limitations:
+  - Does not assume perfectly parallel fingers or equal contact height.

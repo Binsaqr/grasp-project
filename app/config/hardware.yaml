@@ -1,0 +1,18 @@
+# Stable camera selection defaults.
+#
+# USB bus/device nodes such as /dev/bus/usb/<BUS>/<DEVICE> are intentionally not
+# configuration values because they change after reconnects and reboots.
+
+realsense:
+  selection: auto
+  serial: null
+  preferred_model: null
+  require_usb3: true
+  reconnect_timeout_sec: 10
+
+davis:
+  selection: auto
+  serial: null
+  vendor_id: "152a"
+  product_id: "841a"
+  reconnect_timeout_sec: 10

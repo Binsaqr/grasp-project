@@ -1,0 +1,6 @@
+# Quality matrix display and staleness defaults.
+# These mirror current environment-configurable dashboard thresholds.
+matrix_stale_center_shift_px: 20
+matrix_stale_iou_threshold: 0.75
+matrix_stale_depth_delta_mm: 30
+

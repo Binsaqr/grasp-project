@@ -1,0 +1,25 @@
+# Core runtime dependencies for the dashboard, planners, and quality metrics.
+numpy
+scipy
+opencv-python
+matplotlib
+Pillow
+PyQt5
+flask
+PyYAML
+
+# Sensor backends (pip-installable parts).
+# pyrealsense2: device discovery / diagnostics; live RGB-D frames come from ROS 2.
+pyrealsense2
+# pyaer: DAVIS event/APS backend. No wheels for Python >= 3.13; needs libcaer.
+# See docs/camera_setup_guide.md. Install manually where supported:
+#   pip install pyaer
+# (optional alternatives probed at runtime: dv_processing, dv)
+
+# NOT pip-installable, required for the live RealSense backend:
+#   ROS 2 Humble (rclpy, sensor_msgs) + realsense2_camera node.
+# See README_RUN_APP.md; without ROS 2 the dashboard runs but the
+# RealSense grasp backend reports CAMERA STREAM ERROR.
+
+# Development / test:
+pytest

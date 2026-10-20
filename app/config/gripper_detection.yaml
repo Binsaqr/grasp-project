@@ -1,0 +1,32 @@
+embodiment_type: two_point_parallel_gripper
+expected_finger_count: 2
+expected_jaw_width_range_mm:
+  min: 30
+  max: 130
+expected_finger_length_range_px:
+  min: 25
+  max: 220
+broad_left_search_region:
+  x_min_fraction: 0.0
+  x_max_fraction: 0.55
+  y_min_fraction: 0.05
+  y_max_fraction: 0.95
+broad_right_search_region:
+  x_min_fraction: 0.45
+  x_max_fraction: 1.0
+  y_min_fraction: 0.05
+  y_max_fraction: 0.95
+confidence_thresholds:
+  detected: 35.0
+  high_confidence: 65.0
+temporal_stability_frames: 3
+contact_gap_thresholds:
+  possible_contact_px: 12
+  visual_contact_px: 6
+  depth_contact_delta_mm: 35
+occlusion_behavior:
+  max_predicted_frames: 4
+  hand_or_foreign_occlusion_blocks_detected_contact: true
+notes:
+  - Search regions are broad, resolution-relative priors only.
+  - Do not treat one frame or one contour as a confirmed bilateral gripper contact.

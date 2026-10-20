@@ -1,0 +1,52 @@
+# Multi-view RealSense bottle reconstruction settings.
+#
+# These values document the runtime environment variables used by
+# src/grasp_project/realsense/multiview_reconstruction.py. The live demo keeps
+# TSDF disabled and uses voxel-cloud accumulation so the overlay loop is not
+# blocked by reconstruction.
+
+enabled: true
+fusion_mode: voxel_cloud
+tsdf_enabled: false
+
+input_gates:
+  max_pointcloud_age_sec: 2.0
+  min_scene_points: 200
+  min_bottle_points: 80
+  min_bottle_depth_valid_ratio: 0.50
+  allow_bbox_roi: false
+  require_intrinsics: true
+  require_snapshot_consistency: true
+  require_locked_or_tracked_target: true
+
+registration:
+  pose_provider_priority:
+    - ros_tf_camera_pose
+    - robot_pose_with_hand_eye_calibration
+    - rgbd_odometry_plus_icp
+    - registration_unavailable
+  min_registration_fitness: 0.35
+  max_inlier_rmse_m: 0.015
+  min_overlap_ratio: 0.25
+  max_translation_step_m: 0.10
+  max_rotation_step_deg: 20.0
+  allow_numpy_centroid_registration: false
+
+keyframes:
+  min_translation_mm: 10.0
+  min_rotation_deg: 3.0
+  max_keyframe_interval_sec: 1.0
+  max_queue_size: 1
+
+fusion:
+  bottle_voxel_size_m: 0.004
+  scene_voxel_size_m: 0.008
+  max_accumulated_points: 250000
+  max_scene_voxels: 80000
+  preview_max_points: 40000
+
+motion_and_contacts:
+  bottle_moved_threshold_mm: 35.0
+  contact_surface_tolerance_m: 0.020
+  enable_contact_candidates: false
+  davis_motion_gate_enabled: false

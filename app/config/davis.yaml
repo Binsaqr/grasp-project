@@ -1,0 +1,89 @@
+# User-tunable DAVIS motion demo defaults.
+target_display_fps: 30
+event_analysis_fps: 10
+report_interval_sec: 2.0
+event_heatmap_window_ms: 100
+event_ring_buffer_sec: 2.0
+debug_heatmap: false
+
+aps:
+  enabled: true
+  display_mode: auto
+  bayer_pattern: auto
+  channel_order: auto
+  color_required: false
+  target_display_fps: 30
+  # preview enhancement (display only; raw APS statistics are never altered)
+  display_enhancement: auto_normalize
+  gamma: 0.7
+  clahe_enabled: false
+  low_light_warn_p95_threshold: 40
+  low_contrast_warn_std_threshold: 12
+  # APS exposure control through the installed pyaer/libcaer backend.
+  # Generic gain control is not exposed by this backend and remains N/A.
+  exposure_auto: true
+  exposure_us: null
+  # Raw-APS evidence gates for saturated, textureless reflections. These are
+  # applied before a contour may become an object-specific event ROI.
+  glare_bright_threshold_u8: 240
+  glare_max_bright_fraction: 0.15
+  glare_max_interior_edge_density: 0.045
+  # A new target/switch must persist across detector cycles. Small overlapping
+  # updates remain normal tracking and do not repeatedly reset the baseline.
+  target_confirmation_frames: 3
+  target_switch_confirmation_frames: 3
+  # Detect on every available APS frame. The live camera currently produces
+  # about 2 FPS, so checking every fifth frame cannot confirm a target before
+  # its context expires.
+  target_detection_interval_frames: 1
+  target_same_iou_min: 0.20
+  target_pending_iou_min: 0.50
+  target_max_missed_detections: 2
+  # Runtime keeps the confirmed context through at least one measured detector
+  # cycle plus jitter, bounded by the cap below.
+  target_confirmed_max_age_sec: 1.25
+  target_cadence_jitter_multiplier: 1.5
+  target_confirmed_age_cap_sec: 3.0
+  # Freeze the confirmed DAVIS-native bottle ROI through a normal demo trial.
+  # Release/end-motion clears it immediately.
+  post_grasp_target_latch_sec: 120.0
+  # auto infers the nearest standard 8/10/12/14/16-bit ADC code range from
+  # raw integer frames. Set a known sensor ADC depth here if required.
+  raw_adc_bit_depth: auto
+
+events:
+  enabled: true
+  # Keep the visible and analyzed region fixed at the middle third. Before
+  # grasp it is an event-health preview; after grasp it becomes the localized
+  # DAVIS grasp-zone motion signal. A DAVIS-native APS contour may refine
+  # attribution, but no RealSense-to-DAVIS calibration is required.
+  analysis_roi_mode: fixed_center_third
+  diagnostic_roi_xywh: [115, 86, 116, 88]
+  ring_buffer_sec: 2.0
+  max_event_count: 50000
+  baseline_duration_sec: 2.0
+  # This DAVIS currently produces roughly 0.5k-2.5k background events/s in a
+  # static scene. Accept that measured idle floor as the baseline; later
+  # local/global and disturbance gates still reject lighting/camera activity.
+  baseline_max_quiet_rate: 3000
+
+sync:
+  maximum_aps_offset_ms: 50
+  event_window_before_ms: 100
+  event_window_after_ms: 100
+  stale_threshold_ms: 1000
+
+davis_motion:
+  micro_window_ms: 5
+  short_window_ms: 25
+  motion_window_ms: 100
+  stability_window_ms: 300
+  post_grasp_window_ms: 1200
+  incipient_slip_px_threshold: 2.0
+  gross_slip_px_threshold: 8.0
+  cumulative_slip_px_threshold: 12.0
+  rotation_deg_threshold: 3.0
+  gross_rotation_deg_threshold: 10.0
+  vibration_rms_px_threshold: 2.5
+  min_event_count_for_motion_estimate: 50
+  min_motion_confidence: 0.55

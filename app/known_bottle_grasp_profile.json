@@ -1,0 +1,21 @@
+{
+    "object_name": "known_water_bottle",
+    "expected_diameter_mm": {
+        "min": 45,
+        "max": 85
+    },
+    "expected_height_mm": {
+        "min": 140,
+        "max": 280
+    },
+    "preferred_grasp_body_fractions": [0.45, 0.52, 0.60],
+    "fallback_grasp_body_fractions": [0.32, 0.38, 0.68, 0.74],
+    "avoid_top_fraction": 0.20,
+    "avoid_bottom_fraction": 0.15,
+    "preferred_patch_height_mm": 50,
+    "preferred_close_distance_mm": 200,
+    "min_close_distance_mm": 150,
+    "max_close_distance_mm": 260,
+    "assumed_friction_coefficient": 0.5,
+    "notes": "Known-object grasp profile for a water bottle. This is a hand-authored profile used for candidate generation and ranking, not a learned full grasp model."
+}

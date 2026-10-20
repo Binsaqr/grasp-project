@@ -1,0 +1,13 @@
+embodiment_id: human_hand
+display_name: Human Hand
+expected_contact_count_min: 1
+expected_contact_count_max: null
+contact_geometry_types: [fingertip, finger_link, palm_region, patch]
+primary_quality_metric: support_polygon
+secondary_quality_metrics: [contact_coverage, object_motion, stability]
+engagement_action: HOLD
+release_status: CONFIG_ONLY
+stable_status: experimental
+limitations:
+  - Research/observation mode only unless explicitly configured.
+  - Must not control robot actions by default.

@@ -1,0 +1,6 @@
+# Dashboard/demo defaults.
+host: "127.0.0.1"
+port: 8080
+final_command: "./run_final_grasp_demo.sh --with-davis"
+output_dir: "output"
+

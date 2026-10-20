@@ -1,0 +1,20 @@
+camera_frame: realsense_color_optical_frame
+calibration_mode: approximate
+calibration_confidence: low
+calibration_date: null
+left_jaw_nominal_geometry:
+  inner_edge_orientation: approximately_vertical_in_image
+  physical_jaw_thickness_mm: null
+  physical_jaw_length_mm: null
+right_jaw_nominal_geometry:
+  inner_edge_orientation: approximately_vertical_in_image
+  physical_jaw_thickness_mm: null
+  physical_jaw_length_mm: null
+expected_inner_edge_orientation: opposing_parallel_edges
+expected_symmetry: left_right_about_bottle_center
+physical_jaw_thickness_mm: null
+physical_jaw_length_mm: null
+camera_to_gripper_transform: null
+limitations:
+  - Approximate mode only; use as soft evidence, not a hard workspace gate.
+  - Do not force detections from this calibration when image/depth evidence is weak.

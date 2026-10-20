@@ -1,0 +1,39 @@
+services:
+  grasp-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: localhost/grasp-project:release
+    container_name: grasp-dashboard
+    init: true
+    network_mode: host
+    privileged: true
+    security_opt:
+      - unmask=all
+      - label=disable
+    ipc: host
+    environment:
+      ROS_DOMAIN_ID: ${ROS_DOMAIN_ID:-67}
+      HOST: ${HOST:-127.0.0.1}
+      PORT: ${PORT:-8080}
+      CAMERA_SELECTION_MODE: ${CAMERA_SELECTION_MODE:-auto}
+      REALSENSE_FPS: ${REALSENSE_FPS:-30}
+      REALSENSE_COLOR_PROFILE: ${REALSENSE_COLOR_PROFILE:-640x480x30}
+      REALSENSE_DEPTH_PROFILE: ${REALSENSE_DEPTH_PROFILE:-640x480x30}
+      REALSENSE_SERIAL: ${REALSENSE_SERIAL:-}
+      DAVIS_SERIAL: ${DAVIS_SERIAL:-}
+      DAVIS_TARGET_DISPLAY_FPS: ${DAVIS_TARGET_DISPLAY_FPS:-30}
+      DAVIS_EVENT_ANALYSIS_FPS: ${DAVIS_EVENT_ANALYSIS_FPS:-10}
+      DAVIS_REPORT_INTERVAL_SEC: ${DAVIS_REPORT_INTERVAL_SEC:-2.0}
+      DAVIS_DEBUG_HEATMAP: ${DAVIS_DEBUG_HEATMAP:-0}
+      POINTCLOUD_GENERATE_FPS: ${POINTCLOUD_GENERATE_FPS:-0.5}
+      POINTCLOUD_PREVIEW_FPS: ${POINTCLOUD_PREVIEW_FPS:-0.5}
+      MPLCONFIGDIR: /app/.cache/matplotlib
+      ROS_LOG_DIR: /app/.cache/ros_log
+    volumes:
+      - ./output:/app/output
+      - ./config:/app/config
+      - /dev:/dev
+      - /run/udev:/run/udev:ro
+    command: ["bash", "-lc", "source /opt/ros/humble/setup.bash && exec ./run_final_grasp_demo.sh --with-davis"]
+    stop_grace_period: 20s

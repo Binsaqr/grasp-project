@@ -1,0 +1,60 @@
+# Live operational grasp-quality monitor.
+#
+# This does not change epsilon/wrench math. It starts from the immutable
+# analytic score and applies current operational penalties and hard gates.
+
+score_scale: 100.0
+required_contacts: 2
+
+weights:
+  alignment: 12.0
+  angle: 10.0
+  depth: 10.0
+  grip_width: 8.0
+  contact: 20.0
+  band_drift: 18.0
+  band_visibility: 15.0
+  pointcloud: 12.0
+  incipient_slip: 12.0
+  gross_slip: 35.0
+  rotation: 18.0
+  vibration: 12.0
+  target_loss: 100.0
+  uncertainty: 10.0
+
+thresholds:
+  alignment_px: 24.0
+  angle_deg: 18.0
+  depth_mm: 35.0
+  grip_width_mm: 18.0
+  band_drift_px: 24.0
+  band_visibility_ratio: 0.50
+  frame_age_ms: 120.0
+  sync_delta_sec: 0.15
+  pointcloud_stale_sec: 2.0
+  incipient_slip_score: 70.0
+  gross_slip_score: 65.0
+  severe_rotation_score: 70.0
+  vibration_score: 75.0
+  davis_incipient_slip_px: 4.0
+  davis_gross_slip_px: 10.0
+  davis_rotation_deg: 8.0
+  davis_vibration_rms_px: 5.0
+
+hard_gates:
+  target_lost_score_cap: 5.0
+  gross_slip_score_cap: 12.0
+  missing_contacts_score_cap: 18.0
+  severe_rotation_score_cap: 20.0
+  invalid_baseline_score_cap: 0.0
+  off_surface_score_cap: 15.0
+  band_relock_score_cap: 15.0
+  sync_score_cap: 25.0
+
+smoothing:
+  alpha_normal: 0.30
+  alpha_fast_drop: 0.75
+  alpha_recovery: 0.18
+  fast_drop_threshold: 12.0
+  trend_deadband: 2.0
+  severe_recovery_frames: 6

@@ -1,0 +1,13 @@
+embodiment_id: soft_gripper
+display_name: Soft Gripper
+expected_contact_count_min: 1
+expected_contact_count_max: null
+contact_geometry_types: [distributed_patch, wrap_region, patch]
+primary_quality_metric: wrap_coverage
+secondary_quality_metrics: [distributed_contact_quality, enclosure_score, symmetry]
+engagement_action: READY_TO_WRAP
+release_status: READY_FOR_BENCHMARKING
+stable_status: experimental
+limitations:
+  - Do not represent as two precise contact pixels.
+  - Two-contact epsilon is not applicable until a separate validated soft-gripper metric exists.
